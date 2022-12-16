@@ -75,7 +75,7 @@ when the function that called `alloca()` returns to its caller.
 void *alloca(size_t size);
 ```
 
-## [Fork](Fork)
+## [Fork](./fork)
 
 Learn `fork` system call with it's related things like `wait`.
 
@@ -103,19 +103,15 @@ Convert some known syntax of C into assembly.
 
 Generate random number between 0 to 3 with `random` instead of `rand`.
 
-## [static](static)
+## [Pointer](pointer)
 
-Static variable in C and how to use them for storing the functions states.
+Review on pointer concepts and some common mistakes about them.
 
-## [pointer](pointer)
-
-Let's have fun with pointers and try to understand them even more!
-
-## [TwinPrimes](TwinPrimes)
+## [Twin Primes](TwinPrimes)
 
 A twin prime is a prime number that is either 2 less or 2 more than another prime number—for example, either member of the twin prime pair (41, 43).
 
-## [DoubleToByte](DoubleToByte)
+## [Double To Byte](DoubleToByte)
 
 Convert a double number into byte representation.
 
