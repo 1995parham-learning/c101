@@ -6,7 +6,7 @@ C is my life, here I try to have good time with C.
 
 ## Introduction to Makefile
 
-Makefile is a good thing ! have this for have fun:
+This is a Makefile example that I used for making these examples:
 
 ```make
 all: calc_lcm_gcd
@@ -22,9 +22,9 @@ clean:
  rm main.o gcd.o lcm.o calc_lcm_gcd
 ```
 
-check [here](http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/) for having even more fun !
+Check [here](http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/) to read more.
 
-## [clone](clone)
+## [Clone](clone)
 
 Linux provides the ability to create threads using the `clone()` system call.
 when `clone()` is invoked, it is passed a set of flags that determine how much
@@ -46,7 +46,7 @@ The syntax is similar to a simple switch statement for types:
 _Generic( 'a', char: 1, int: 2, long: 3, default: 0)
 ```
 
-The above expression evaluates to 2 (character constants are ints in C).
+The above expression evaluates to 2 (character constants are `int`s in C).
 The use of `_Generic` can be abstracted in a macro:
 
 ```c
@@ -61,7 +61,7 @@ My Teacher Assistant, Ahmad Asadi, had guess about floating point number impleme
 
 1 + 1/2 + 1/3 + .. + 1/n != 1/n + 1/(n - 1) + ... + 1/2 + 1
 
-Let's check it in AhamadGuess :joy:.
+Let's check it.
 
 ## [Alloca](alloca)
 
@@ -118,3 +118,7 @@ A twin prime is a prime number that is either 2 less or 2 more than another prim
 ## [DoubleToByte](DoubleToByte)
 
 Convert a double number into byte representation.
+
+## [Slice](./slice)
+
+Slices are a Golang concept but here we tried to implement it in C and check how is the idea working.
