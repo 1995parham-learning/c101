@@ -2,26 +2,26 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define stack_item(s, i, t) (t*)_stack_item(s, i)
+#define slice_item(s, i, t) (t*)_slice_item(s, i)
 
-// use stack instead of struct stack*
-typedef struct stack* stack;
+// use slice instead of struct slice*
+typedef struct slice* slice;
 
-// stack implementation with an array of void* items.
+// slice implementation with an array of void* items.
 // it stores the current size of its array into cap
 // and then increase it when array items' length (len) increased.
 //
 // please note that it only increases it size and it never
 // shrinks.
-struct stack {
+struct slice {
   void **items;
 
   int cap;
   int len;
 };
 
-stack stack_new(void) {
-  stack s = malloc(sizeof(struct stack));
+slice slice_new(void) {
+  slice s = malloc(sizeof(struct slice));
 
   assert(s != NULL);
 
@@ -34,14 +34,14 @@ stack stack_new(void) {
   return s;
 }
 
-void stack_push(stack stack, void *item) {
+void slice_push(slice slice, void *item) {
   // it checks if the len index is less than the
   // maximum items the array can store.
-  if (stack->len < stack->cap) {
+  if (slice->len < slice->cap) {
     // if it's less, then it pushes the
     // item to the end of the array.
-    stack->items[stack->len] = item;
-    stack->len++;
+    slice->items[slice->len] = item;
+    slice->len++;
   } else {
     // if the len is greater than or equal
     // to the maximum size (cap) then
@@ -49,14 +49,14 @@ void stack_push(stack stack, void *item) {
     // the size of the initial array.
     //
     // this will case a copy from old to newly allocated array.
-    void **items = realloc(stack->items, 2 * (stack->cap) * sizeof(void *));
+    void **items = realloc(slice->items, 2 * (slice->cap) * sizeof(void *));
     assert(items != NULL);
-    stack->items = items;
-    stack->cap = 2 * stack->cap;
+    slice->items = items;
+    slice->cap = 2 * slice->cap;
   }
 }
 
-void *_stack_item(stack s, int index) {
+void *_slice_item(slice s, int index) {
   if (index < s->len) {
     return s->items[index];
   }
@@ -65,9 +65,9 @@ void *_stack_item(stack s, int index) {
 
 int main(int argc, char *argv[]) {
   int i;
-  stack s;
+  slice s;
 
-  s = stack_new();
+  s = slice_new();
 
   printf("capacity: %d\n", s->cap);
   printf("length: %d\n", s->len);
@@ -76,10 +76,10 @@ int main(int argc, char *argv[]) {
   // so storing it address is a bad idea.
   // your result array is 20 20 ... 20.
   for (i = 0; i < 20; i++)
-    stack_push(s, &i);
+    slice_push(s, &i);
 
   printf("capacity: %d\n", s->cap);
   printf("length: %d\n", s->len);
 
-  printf("[10]: %d\n", *stack_item(s, 10, int));
+  printf("[10]: %d\n", *slice_item(s, 10, int));
 }
