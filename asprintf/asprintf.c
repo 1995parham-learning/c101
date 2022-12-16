@@ -1,15 +1,3 @@
-/*
- * In The Name Of God
- * ========================================
- * [] File Name : asprintf.c
- *
- * [] Creation Date : 01-02-2015
- *
- * [] Last Modified : Fri 06 Mar 2015 12:32:41 AM IRST
- *
- * [] Created By : Parham Alvani (parham.alvani@gmail.com)
- * =======================================
- */
 #ifndef HAVE_ASPRINTF
 #define HAVE_ASPRINTF
 
@@ -52,7 +40,7 @@ int asprintf(char **str, const char *fmt, ...) {
 
 #endif
 
-#ifndef Test_asprintf
+#ifndef TEST_ASPRINTF
 
 int main(int argc, char *argv[]) {
   char *s;
