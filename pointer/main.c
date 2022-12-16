@@ -1,15 +1,3 @@
-/*
- * In The Name Of God
- * ========================================
- * [] File Name : main.c
- *
- * [] Creation Date : 12-01-2015
- *
- * [] Last Modified : Mon 12 Jan 2015 04:08:14 PM IRST
- *
- * [] Created By : Parham Alvani (parham.alvani@gmail.com)
- * =======================================
- */
 #include <stdio.h>
 
 static int n1;
@@ -17,11 +5,13 @@ static int n2;
 
 int main(int argc, char *argv[]) {
   // work with static variable's addresses
+  // and their relation.
   printf("n1 = %d\n", n1);
   printf("n2 = %d\n", n2);
 
   int *p1 = &n1;
   *p1 = 20;
+  // change n2 from p1 which is a pointer to n1.
   *(p1 + 1) = 10;
 
   int *p2 = &n2;
