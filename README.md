@@ -118,3 +118,7 @@ Convert a double number into byte representation.
 ## [Slice](./slice)
 
 Slices are a Golang concept but here we tried to implement it in C and check how is the idea working.
+
+## [Hello Raspberry Pi](./hello-PI/)
+
+There is a first time for everything, this is the first time that I saw an ARMv6.
