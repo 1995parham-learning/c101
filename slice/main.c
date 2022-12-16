@@ -20,25 +20,35 @@ struct slice {
   int len;
 };
 
-slice slice_new(void) {
+slice slice_new_with_len_cap(int len, int cap) {
+  assert(len <= cap);
+
   slice s = malloc(sizeof(struct slice));
 
   assert(s != NULL);
 
-  s->items = malloc(10 * sizeof(void *));
+  s->items = malloc(cap * sizeof(void *));
   assert(s->items != NULL);
 
-  s->len = 0;
-  s->cap = 10;
+  s->len = len;
+  s->cap = cap;
 
   return s;
 }
 
-void slice_push(slice slice, void *item) {
+slice slice_new_with_len(int len) {
+  return slice_new_with_len_cap(len, len);
+}
+
+slice slice_new(void) {
+  return slice_new_with_len_cap(0, 10);
+}
+
+void slice_append(slice slice, void *item) {
   // it checks if the len index is less than the
   // maximum items the array can store.
   if (slice->len < slice->cap) {
-    // if it's less, then it pushes the
+    // if len is less than cap, then it appends the
     // item to the end of the array.
     slice->items[slice->len] = item;
     slice->len++;
@@ -76,7 +86,7 @@ int main(int argc, char *argv[]) {
   // so storing it address is a bad idea.
   // your result array is 20 20 ... 20.
   for (i = 0; i < 20; i++)
-    slice_push(s, &i);
+    slice_append(s, &i);
 
   printf("capacity: %d\n", s->cap);
   printf("length: %d\n", s->len);
