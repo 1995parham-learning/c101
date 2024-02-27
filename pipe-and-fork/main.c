@@ -1,20 +1,12 @@
-/*
- * In The Name Of God
- * ========================================
- * [] File Name : PipeFork.c
- *
- * [] Creation Date : 20-04-2015
- *
- * [] Last Modified : Mon 20 Apr 2015 11:52:32 PM IRDT
- *
- * [] Created By : Parham Alvani (parham.alvani@gmail.com)
- * =======================================
- */
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <unistd.h>
+
+// pipe and fork example shows how to use pipe and fork
+// together so you can run a program and pipe its result
+// (status code) into the parent process.
 
 int main(int argc, char const *argv[]) {
   int c2p[2];
