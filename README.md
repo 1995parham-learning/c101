@@ -63,7 +63,7 @@ So that `type_idx('a')` evaluates to 2 and `type_idx("a")` evaluates to 0.
 Ahmad Asadi, had guess about floating point number implementation in C:
 
 $$
-1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n} != \frac{1}{n} + \frac{1}{n - 1} + \ldots + \frac{1}{2} + 1
+1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n} \ne \frac{1}{n} + \frac{1}{n - 1} + \ldots + \frac{1}{2} + 1
 $$
 
 Let's check it.
