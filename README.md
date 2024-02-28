@@ -2,11 +2,14 @@
 
 ## Introduction
 
-C is my life, here I try to have good time with C.
+C is my life, here I try to have good time with C. Most of these examples using the Linux system calls
+and demonstrates operating system concepts.
 
 ## Introduction to Makefile
 
-This is a Makefile example that I used for making these examples:
+Makefile is useful to building C-based project. The following example
+shows a Makefile for building project that has `main.c`, `gcd.c` and `lcm.c`.
+The `functions.h` contains the required definitions.
 
 ```make
 all: calc_lcm_gcd
@@ -27,7 +30,7 @@ Check [here](http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/) to re
 ## [Clone](clone)
 
 Linux provides the ability to create threads using the `clone()` system call.
-when `clone()` is invoked, it is passed a set of flags that determine how much
+When `clone()` is invoked, it is passed a set of flags that determine how much
 sharing is to take place between the parent and child tasks.
 
 ## [Threads](Threads)
@@ -55,11 +58,13 @@ The use of `_Generic` can be abstracted in a macro:
 
 So that `type_idx('a')` evaluates to 2 and `type_idx("a")` evaluates to 0.
 
-## [AhmadGuess](AhmadGuess)
+## [Ahmad's Guess](AhmadGuess)
 
-My Teacher Assistant, Ahmad Asadi, had guess about floating point number implementation in C:
+Ahmad Asadi, had guess about floating point number implementation in C:
 
-1 + 1/2 + 1/3 + .. + 1/n != 1/n + 1/(n - 1) + ... + 1/2 + 1
+$$
+1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n} != \frac{1}{n} + \frac{1}{n - 1} + \ldots + \frac{1}{2} + 1
+$$
 
 Let's check it.
 
@@ -95,7 +100,7 @@ Example project for using CMake.
 
 Write user given string into file after some manipulation.
 
-## [c-to-assembly](c-to-assembly)
+## [C to Assembly](c-to-assembly)
 
 Convert some known syntax of C into assembly.
 
@@ -122,3 +127,7 @@ Slices are a Golang concept but here we tried to implement it in C and check how
 ## [Hello Raspberry Pi](./hello-PI/)
 
 There is a first time for everything, this is the first time that I saw an ARMv6.
+
+## [Pipe & Fork](./pipe-and-fork)
+
+Using pipe to communicate between parent and child processes.
