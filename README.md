@@ -82,9 +82,9 @@ void *alloca(size_t size);
 
 ## [Fork](./fork)
 
-Learn `fork` system call with it's related things like `wait`.
+Learn about `fork` system call with its related system calls like `wait`.
 
-## [BahadorGuess](BahadorGuess)
+## [Bahador's Guess](BahadorGuess)
 
 This program shows that the expressions with side effects has no side effect in an unevaluted context.
 
