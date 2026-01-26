@@ -16,7 +16,7 @@ int asprintf(char **str, const char *fmt, ...) {
   /* finding size */
   va_start(argp, fmt);
   len = vsnprintf(one_char, 1, fmt, argp);
-  if (len < 1) {
+  if (len < 0) {
     fprintf(stderr, "An encoding error occured.");
     fprintf(stderr, "Setting the input pointer to NULL.\n");
     *str = NULL;
@@ -28,7 +28,7 @@ int asprintf(char **str, const char *fmt, ...) {
   *str = malloc(len + 1);
 
   /* printing string to allocated space */
-  if (!str) {
+  if (*str == NULL) {
     fprintf(stderr, "Couldn't allocate %i bytes.\n", len + 1);
     return -1;
   }

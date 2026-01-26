@@ -19,6 +19,7 @@ int main() {
   fp = fopen("testfile.txt", "w+");
   if (fp == NULL) {
     perror("fopen()");
+    return -1;
   }
 
   /* Write 8 byte number to file */

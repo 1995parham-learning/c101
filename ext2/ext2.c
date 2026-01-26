@@ -13,10 +13,17 @@ uint32_t make_bytes_int(uint8_t *buff, int start) {
 int main(int argc, char *argv[]) {
   /* Open device file */
   int fd = open("/dev/sdb1", O_RDONLY);
+  if (fd < 0) {
+    perror("open");
+    return 1;
+  }
 
   uint8_t buff[1024];
   lseek(fd, 1024, SEEK_SET);
-  read(fd, buff, 1024);
+  if (read(fd, buff, 1024) != 1024) {
+    perror("read");
+    return 1;
+  }
 
   printf("Ext2 signature : %x %x\n", buff[56], buff[57]);
 
@@ -33,6 +40,6 @@ int main(int argc, char *argv[]) {
 
   time_t last_mount_time = make_bytes_int(buff, 44);
   strftime(timestr, 100, "%Y-%m-%d %H:%M:%S.000",
-           localtime(&last_written_time));
+           localtime(&last_mount_time));
   printf("Last mount time : %s\n", timestr);
 }

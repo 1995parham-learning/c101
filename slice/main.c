@@ -45,25 +45,20 @@ slice slice_new(void) {
 }
 
 void slice_append(slice slice, void *item) {
-  // it checks if the len index is less than the
-  // maximum items the array can store.
-  if (slice->len < slice->cap) {
-    // if len is less than cap, then it appends the
-    // item to the end of the array.
-    slice->items[slice->len] = item;
-    slice->len++;
-  } else {
-    // if the len is greater than or equal
-    // to the maximum size (cap) then
-    // it reallocs a new array which is twice
-    // the size of the initial array.
-    //
-    // this will case a copy from old to newly allocated array.
+  // if len is greater than or equal to the maximum size (cap)
+  // then it reallocs a new array which is twice the size of
+  // the initial array.
+  //
+  // this will case a copy from old to newly allocated array.
+  if (slice->len >= slice->cap) {
     void **items = realloc(slice->items, 2 * (slice->cap) * sizeof(void *));
     assert(items != NULL);
     slice->items = items;
     slice->cap = 2 * slice->cap;
   }
+  // it appends the item to the end of the array.
+  slice->items[slice->len] = item;
+  slice->len++;
 }
 
 void *_slice_item(slice s, int index) {

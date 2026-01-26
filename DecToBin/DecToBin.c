@@ -59,6 +59,9 @@ int main(int argc, char *argv[]) {
 
   scanf("%d", &num);
 
+  if (num == 0)
+    push(0);
+
   while (num != 0) {
     push(num % 2);
     num /= 2;

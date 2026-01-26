@@ -94,15 +94,22 @@ sizeof(a++)
 
 ## [CMakeTest](CmakeTest)
 
-Example project for using CMake.
+A minimal `libglib`-based "hello world", built through a real `CMakeLists.txt`
+(with a `src/` subdirectory) instead of a Makefile. Run `git clean -f -d -X`
+to remove the files CMake generates.
 
 ## [DataToFile](DataToFile)
 
-Write user given string into file after some manipulation.
+Reads a line from stdin, finds occurrences of a couple of known words inside
+it, appends each match to `test.txt`, and prints a final timestamp to the
+console.
 
 ## [C to Assembly](c-to-assembly)
 
-Convert some known syntax of C into assembly.
+A grab-bag of tiny C snippets (globals vs. `bss`/`data`, `for`/`if` control
+flow, function calls, inline `__asm__`, section attributes, argument counts,
+float promotion) meant to be compiled to assembly and read side by side with
+the C, one concept per file.
 
 ## [random](random)
 
@@ -173,7 +180,8 @@ Finds the maximum of two doubles and compares two numbers without a single
 ## [crypt](crypt)
 
 Authenticates a username/password pair against the system's password and
-shadow databases using `getpwnam()`, `getspnam()` and `crypt()`.
+shadow databases using `getpwnam()`, `getspnam()` and `crypt()`, then
+overwrites the plaintext password in memory as soon as it's been hashed.
 
 ## [DecToBin](DecToBin)
 

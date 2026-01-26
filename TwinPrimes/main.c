@@ -16,7 +16,10 @@
 int main(int argc, char *argv[]) {
   int low, high, n, count, i;
 
-  scanf("%d %d", &low, &high);
+  if (scanf("%d %d", &low, &high) != 2) {
+    fprintf(stderr, "invalid input\n");
+    return 1;
+  }
 
   count = 0;
   n = 0;

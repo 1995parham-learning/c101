@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 // attrs struct has bit-size for each of its fields.
 struct attrs {
@@ -16,5 +17,10 @@ int main(int argc, char *argv[]) {
   attrs.p2 = 1;
   attrs.p3 = 1;
   attrs.p4 = 31;
-  printf("%X\n", attrs);
+
+  // attrs can't be passed to a variadic printf directly (it isn't an
+  // integer type), so copy its packed bits into one instead.
+  unsigned int raw = 0;
+  memcpy(&raw, &attrs, sizeof(attrs));
+  printf("%X\n", raw);
 }

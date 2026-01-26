@@ -24,8 +24,13 @@ int main(int argc, char *argv[]) {
   FILE *pWrite;
 
   printf("Type your message:\n");
-  fgets(cInput, MAX_STR_LEN, stdin);
-  cInput[strlen(cInput) - 1] = 0; /* strip newline from input */
+  if (fgets(cInput, MAX_STR_LEN, stdin) == NULL) {
+    fprintf(stderr, "no input provided\n");
+    exit(EXIT_FAILURE);
+  }
+  size_t inputLen = strlen(cInput);
+  if (inputLen > 0 && cInput[inputLen - 1] == '\n')
+    cInput[inputLen - 1] = 0; /* strip newline from input */
   printf("\nInitialised string array:\n");
 
   while (cArray[y]) {

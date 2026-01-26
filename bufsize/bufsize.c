@@ -27,5 +27,7 @@ int main(int argc, char *argv[]) {
 
   printf("The buffer size is %d\n", bufsize);
 
+  fclose(f);
+
   return 0;
 }

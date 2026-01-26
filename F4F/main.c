@@ -33,11 +33,11 @@ uint8_t HEA(uint8_t A, uint8_t B) {
 void fsl(int slot1, int slot2, uint32_t *src, uint32_t *dest) {
   uint8_t B1 = (uint8_t)((*src) & 0xF);
   printf("%u\n", B1);
-  uint8_t A1 = (uint8_t)((*src) & 0xF0);
+  uint8_t A1 = (uint8_t)(((*src) & 0xF0) >> 4);
   printf("%u\n", A1);
-  uint8_t B2 = (uint8_t)((*src) & 0xF00);
+  uint8_t B2 = (uint8_t)(((*src) & 0xF00) >> 8);
   printf("%u\n", B2);
-  uint8_t A2 = (uint8_t)((*src) & 0xF000);
+  uint8_t A2 = (uint8_t)(((*src) & 0xF000) >> 12);
   printf("%u\n", A2);
   if ((*src) & 1 << 16) {
     (*dest) = HEM(A1, B1) | HEM(A2, B2) << 8;

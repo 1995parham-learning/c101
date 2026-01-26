@@ -34,6 +34,8 @@ int main(int argc, char const *argv[]) {
     }
 
     read(c2p[0], &stat, sizeof(int));
+    close(c2p[0]);
+    close(c2p[1]);
     if (stat != 0) {
       printf("Not succsesful: %s %d\n", argv[i], stat);
     } else {
