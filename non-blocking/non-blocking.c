@@ -44,6 +44,8 @@ int main(int argc, char *argv[]) {
 
   if (!fgets(buffer, 1024, stdin))
     die("fgets() [Like I say..]");
-  buffer[strlen(buffer) - 1] = 0;
+  size_t len = strlen(buffer);
+  if (len > 0 && buffer[len - 1] == '\n')
+    buffer[len - 1] = 0;
   printf("%s : No way !!!\n", buffer);
 }

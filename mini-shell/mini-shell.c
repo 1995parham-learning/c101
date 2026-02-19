@@ -30,7 +30,8 @@ int main(int argc, char *args[]) {
     printf("psh> ");
     fflush(stdout);
     /* IMPORTANT */
-    scanf(" %[^\n]", buffer);
+    if (scanf(" %79[^\n]", buffer) != 1)
+      break;
 
     int count = 0;
 

@@ -22,6 +22,10 @@ int main(int argc, char *argv[]) {
   char filenamein[] = "input.txt";
 
   fp = fopen(filenamein, "r");
+  if (fp == NULL) {
+    perror("fopen");
+    return 1;
+  }
 
   N = (ch = fgetc(fp)) - '0';
 

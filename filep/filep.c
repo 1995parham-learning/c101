@@ -17,6 +17,10 @@ FILE *my_open(const char *name) { return fopen(name, "r+"); }
 
 int main(int argc, char *argv[]) {
   FILE *fp = my_open("filep.c");
+  if (fp == NULL) {
+    perror("fopen");
+    return 1;
+  }
   fgetc(fp);
   printf("fgetc(): %d\n", fp->_r);
   printf("fputc(): %d\n", fp->_w);

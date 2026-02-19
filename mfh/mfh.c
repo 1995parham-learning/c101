@@ -53,16 +53,22 @@ int main(int argc, char *argv[]) {
   int i;
   struct date *dates;
 
-  scanf("%d", &n);
+  if (scanf("%d", &n) != 1 || n < 0) {
+    fprintf(stderr, "invalid count\n");
+    return 1;
+  }
   dates = malloc(n * sizeof(struct date));
 
   for (i = 0; i < n; i++) {
-    scanf("%d", &dates[i].year);
-    scanf("%d", &dates[i].month);
-    scanf("%d", &dates[i].day);
+    if (scanf("%d %d %d", &dates[i].year, &dates[i].month, &dates[i].day) !=
+        3) {
+      fprintf(stderr, "invalid date\n");
+      return 1;
+    }
   }
 
-  scanf("%d", &m);
+  if (scanf("%d", &m) != 1)
+    m = 0;
   if (m == 1)
     qsort(dates, n, sizeof(struct date), int_cmp_asc);
   else if (m == -1)

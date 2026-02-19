@@ -251,12 +251,16 @@ implementing reference-counted substrings over a shared backing buffer.
 ## [Glist](Glist)
 
 Using GLib's doubly linked list, `GList`, and a demonstration that it only
-stores pointers: mutating the pointee changes what every node "sees".
+stores pointers: mutating a local array after appending it changes what
+the node holding that pointer prints, while nodes appended with string
+literals are unaffected.
 
 ## [got](got)
 
-A two-function example poking at the ELF Global Offset Table: one
-translation unit reads an `extern` variable that another one writes.
+A single function that assigns to an `extern int i` never defined in this
+translation unit, built with `gcc -nostdlib -shared -fPIC` into `got.so` —
+inspect the resulting shared object (e.g. `objdump -R got.so`) to see the
+GOT entry created for the unresolved external write.
 
 ## [grid](grid)
 
@@ -290,9 +294,10 @@ and called from Java.
 
 ## [lines](lines)
 
-Reads lines of input into a buffer array that grows as needed. Uses the
-long-removed, inherently unsafe `gets()` on purpose, as a cautionary
-example.
+Reads lines of input with the long-removed, inherently unsafe `gets()` on
+purpose, as a cautionary example. The buffer-growth helper is declared but
+never actually wired up, so despite the bookkeeping this is capped at 16
+lines, not unbounded.
 
 ## [linked-list](linked-list)
 
