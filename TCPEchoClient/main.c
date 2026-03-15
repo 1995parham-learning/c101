@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 
   int debug = 1;
   result = setsockopt(sock, SOL_SOCKET, SO_DEBUG, (void *)&debug,
-                      sizeof((void *)&debug));
+                      sizeof(debug));
   if (result < 0)
     DieWithSystemMessage("setsockopt() failed");
 
@@ -73,8 +73,11 @@ int main(int argc, char *argv[]) {
     if (numByte < 0)
       DieWithSystemMessage("recv() failed");
 
-    printf("%s\n", buffer);
-    totalByteReceive += numByte;
+    if (numByte > 0) {
+      buffer[numByte] = '\0';
+      printf("%s\n", buffer);
+      totalByteReceive += numByte;
+    }
   } while (numByte > 0);
   printf("Total byte received : %d", totalByteReceive);
 

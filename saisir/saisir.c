@@ -37,9 +37,9 @@ struct emp *saisir(struct emp *t, int *m) {
   for (i = *m; i < *m + s; i++) {
     printf("\n\n\n donner les info de %d eme struct employe\n", i + 1);
     printf("\n le nom : ");
-    scanf("%s", (t + i)->nom);
+    scanf("%19s", (t + i)->nom);
     printf("\n le prenom : ");
-    scanf("%s", (t + i)->prenom);
+    scanf("%19s", (t + i)->prenom);
     printf("\n l \' age  : ");
     scanf("%d", &(t + i)->age);
     printf("\n le salaire : ");
@@ -71,7 +71,7 @@ int chercher(struct emp *t, int *m) {
   char cher[20];
 
   printf("\n\n\n Donner moi le nom a chercher :\n\n ");
-  scanf("%s", cher);
+  scanf("%19s", cher);
   for (i = 0; i < *m; i++) {
     if (strcmp((t + i)->nom, cher) == 0) {
       posi = i;

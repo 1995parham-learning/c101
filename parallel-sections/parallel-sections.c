@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
        * Everything in this block happens
        * only in one other thread
        */
-      unsigned int i;
+      unsigned int i = 0;
 
       printf("Hello world of omp #%u\n", i++);
     }

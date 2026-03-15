@@ -19,7 +19,15 @@ const int SIZE = 4096;
 
 int main(int argc, char *argv[]) {
   int fd = shm_open("firstSharedMemory", O_RDONLY, 0644);
+  if (fd == -1) {
+    perror("shm_open");
+    return 1;
+  }
   void *ptr = mmap(NULL, SIZE, PROT_READ, MAP_SHARED, fd, 0);
+  if (ptr == MAP_FAILED) {
+    perror("mmap");
+    return 1;
+  }
   printf("%s", (char *)ptr);
   shm_unlink("firstSharedMemory");
   printf("Hosh.... it's over now !!!\n");

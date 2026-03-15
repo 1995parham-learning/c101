@@ -41,7 +41,12 @@ int main(int argc, char *argv[]) {
     perror("listen()");
 
   client_socket_fd = accept(server_socket_fd, NULL, NULL);
+  if (client_socket_fd == -1)
+    perror("accept()");
+
   fp = fdopen(client_socket_fd, "r");
+  if (fp == NULL)
+    perror("fdopen()");
   while (fgets(input_buffer, sizeof(input_buffer) / sizeof(char), fp)) {
     sprintf(output_buffer, "<tr><td>%s", input_buffer);
     send(client_socket_fd, output_buffer, strlen(output_buffer), 0);

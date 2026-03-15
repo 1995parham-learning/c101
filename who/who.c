@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
       uentry = getpwnam(ret->ut_user);
       if (NULL == uentry) {
         printf("No user found. \n");
-        return 0;
+        continue;
       } else {
         /* Create new list for each user */
         list = NULL;

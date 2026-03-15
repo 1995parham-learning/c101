@@ -23,9 +23,7 @@ int main(int argc, char *argv[]) {
   for (i = 0; i < out; i++)
     arr2D[i] = malloc(in * sizeof(char));
 
-  while (!feof(stdin)) {
-
-    scanf("%c", &arr2D[out - 1][in - 1]);
+  while (scanf("%c", &arr2D[out - 1][in - 1]) == 1) {
 
     in++;
     if (arr2D[out - 1][in - 2] == '\n') {
@@ -38,6 +36,10 @@ int main(int argc, char *argv[]) {
 
     arr2D[out - 1] = realloc(arr2D[out - 1], in * sizeof(char));
   }
+  /* null-terminate the final row: it may be a real unfinished line (no
+   * trailing newline) or an empty placeholder row created by one */
+  arr2D[out - 1][in - 1] = '\0';
+
   int out2 = 0;
 
   do {

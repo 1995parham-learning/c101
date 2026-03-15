@@ -406,8 +406,10 @@ derived from another variable's type instead of being spelled out.
 
 ## [valgrinding](valgrinding)
 
-An array walk that deliberately reads past the end of a heap allocation,
-meant to be run under Valgrind to see it catch the invalid access.
+Allocates a 5-int array, zeroes it, and marks the last slot with a `-1`
+sentinel that `getSize()` walks the array to find. Despite the directory's
+name, this particular walk stays within bounds and frees cleanly — nothing
+here actually triggers a Valgrind complaint as written.
 
 ## [wayland-hello](wayland-hello)
 
