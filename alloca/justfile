@@ -1,0 +1,11 @@
+default:
+    @just --list
+
+build:
+    cc -Wall -O0 -g -std=gnu11 alloca.c -o alloca
+
+run: build
+    ./alloca
+
+clean:
+    rm -f alloca

@@ -22,7 +22,10 @@ int main(int argc, char *argv[]) {
   pid_t cpid;
 
   /* create a pipe before you fork a child process */
-  pipe(pipefd);
+  if (pipe(pipefd) < 0) {
+    perror("pipe");
+    return 1;
+  }
 
   cpid = fork();
 

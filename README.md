@@ -27,6 +27,44 @@ clean:
 
 Check [here](http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/) to read more.
 
+## Introduction to justfile
+
+For the smallest, single-file examples a full Makefile is more ceremony than
+the code needs, so those directories use a [`justfile`](https://github.com/casey/just)
+instead — a plain list of named recipes with no dependency graph to maintain.
+
+```just
+default:
+    @just --list
+
+build:
+    cc -Wall -O0 -g -std=gnu11 main.c -o example
+
+run: build
+    ./example
+
+clean:
+    rm -f example
+```
+
+## Introduction to Meson
+
+Examples that pull in a real external dependency (GLib, Wayland, ...) use
+[Meson](https://mesonbuild.com/) instead, since `dependency()` resolves the
+library via `pkg-config` without hand-rolling `CFLAGS`/`LDLIBS`:
+
+```meson
+project('example', 'c')
+
+glib = dependency('glib-2.0')
+
+executable('example', 'main.c', dependencies: [glib])
+```
+
+Directories with more than one translation unit, or that need explicit link
+flags like `-lm`, still get a `Makefile` — `make`'s dependency graph is the
+right tool once a build has more than one moving part.
+
 ## [Clone](clone)
 
 Linux provides the ability to create threads using the `clone()` system call.

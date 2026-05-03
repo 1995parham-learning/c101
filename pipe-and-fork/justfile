@@ -1,0 +1,11 @@
+default:
+    @just --list
+
+build:
+    cc -Wall -O0 -g -std=gnu11 main.c -o pipe-and-fork
+
+run: build
+    ./pipe-and-fork
+
+clean:
+    rm -f pipe-and-fork

@@ -1,0 +1,11 @@
+default:
+    @just --list
+
+build:
+    cc -Wall -O0 -g -std=gnu11 clone.c -o clone
+
+run: build
+    ./clone
+
+clean:
+    rm -f clone

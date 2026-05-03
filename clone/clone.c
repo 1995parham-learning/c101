@@ -16,7 +16,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int fn(void *arg) { printf("Hello I am here\n"); }
+int fn(void *arg) {
+  printf("Hello I am here\n");
+  return 0;
+}
 
 int main(int argc, char *argv[]) {
   printf("Hello, I am back\n");

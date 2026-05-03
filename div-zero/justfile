@@ -1,0 +1,11 @@
+default:
+    @just --list
+
+build:
+    cc -Wall -O0 -g -std=gnu11 main.c -o div-zero
+
+run: build
+    ./div-zero
+
+clean:
+    rm -f div-zero
