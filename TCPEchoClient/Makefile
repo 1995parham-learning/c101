@@ -22,6 +22,7 @@ endif
 ASFLAGS=-Wall -O0 -g
 
 $(P): $(OBJ)
+	$(CC) -o $(P) $(OBJ) $(LDLIBS)
 Practical.o: Practical.h
 main.o: Practical.h
 

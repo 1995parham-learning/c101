@@ -10,12 +10,11 @@
  * [] Created By : Parham Alvani (parham.alvani@gmail.com)
  * =======================================
  */
-#include <linux/types.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/wait.h>
 #include <unistd.h>
-#include <wait.h>
 
 #define MAX_LINE 80
 
