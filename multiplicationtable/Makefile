@@ -9,7 +9,7 @@
 
 P=multiplicationtable
 OBJ=multiplicationtable.o
-LIB=apophenia gsl
+LIB=gsl
 MLIB=
 
 ifdef LIB
