@@ -39,7 +39,7 @@ int main() {
         return 1;
     }
 
-    while (fscanf(fptr, "%50s", str) == 1) {
+    while (fscanf(fptr, "%49s", str) == 1) {
         fprintf(fw,"%s ", change(str));
     }
 
