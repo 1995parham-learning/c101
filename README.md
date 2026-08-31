@@ -131,3 +131,10 @@ There is a first time for everything, this is the first time that I saw an ARMv6
 ## [Pipe & Fork](./pipe-and-fork)
 
 Using pipe to communicate between parent and child processes.
+
+## Root Project (main.c)
+
+The root-level `main.c` (built via the top-level `CMakeLists.txt` or `just build`)
+reads lines from a text file, reverses each word and wraps it with `A`/`a`, and
+writes the result to another file. Update the hardcoded input/output paths at the
+top of `main()` before running it.

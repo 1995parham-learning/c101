@@ -10,7 +10,7 @@ char *change(char input[50]) {
         count++;
     }
 
-    output= (char*)malloc((count + 2) * sizeof(char));
+    output= (char*)malloc((count + 3) * sizeof(char));
 
     end = count - 1;
 
@@ -30,8 +30,14 @@ char *change(char input[50]) {
 int main() {
     FILE *fptr, *fw;
     char str[50];
+    // Replace these with paths on your own machine.
     fptr = fopen("/home/elahe/Desktop/letter.txt", "r");
     fw   = fopen("/home/elahe/Desktop/new.txt", "w");
+
+    if (fptr == NULL || fw == NULL) {
+        perror("fopen");
+        return 1;
+    }
 
     while (fscanf(fptr, "%50s", str) == 1) {
         fprintf(fw,"%s ", change(str));
