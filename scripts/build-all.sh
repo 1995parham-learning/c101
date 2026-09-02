@@ -9,11 +9,7 @@ cd "$root"
 
 # Directories that can't reasonably be built in a stock CI environment:
 # they need hardware, a toolchain, or a library that isn't available there.
-SKIP=(
-  hello-PI            # ARMv6 cross-compile target, no toolchain in CI
-  JNI                 # Makefile hardcodes a local /usr/lib/jvm/java-7-openjdk-amd64 include path
-  multiplicationtable # depends on Apophenia (libapophenia), not packaged for modern distros
-)
+SKIP=()
 
 should_skip() {
   local dir="$1"

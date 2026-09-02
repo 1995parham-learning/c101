@@ -1,0 +1,13 @@
+default:
+    @just --list
+
+# Cross-compiles for the armv6 hard-float target main.s was generated for
+# (a Raspberry Pi 1 / Zero). Needs an ARM cross-toolchain, e.g. the
+# gcc-arm-linux-gnueabihf apt package on Debian/Ubuntu; this can't run on
+# a non-ARM host, so there's no "run" recipe here.
+build:
+    arm-linux-gnueabihf-gcc -march=armv6 -mfpu=vfp -mfloat-abi=hard \
+        -Wall -O0 -g main.c -o hello-PI
+
+clean:
+    rm -f hello-PI
