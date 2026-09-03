@@ -11,8 +11,9 @@
  * =======================================
  */
 #include <dlfcn.h>
-#include <readline/readline.h>
 #include <stdio.h>
+/* readline.h uses FILE without including <stdio.h>, so it must come after. */
+#include <readline/readline.h>
 #include <stdlib.h>
 #include <string.h>
 
